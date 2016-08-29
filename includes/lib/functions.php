@@ -17,7 +17,67 @@
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   //---------------------------------------------------------------------------------------------------------//
+ 
+  function get_projects(){
   
+    global $dbh;
+    
+    $projliststmt = $dbh->prepare("SELECT * from projects");
+    $projliststmt->execute();
+    $projresult = $projliststmt->fetchAll();
+    
+    return $projresult;
+  
+  }
+ 
+  function get_project_progress($proj_id){
+    
+    global $dbh;
+    
+    $complistname = 'Complete';
+    
+    $progresstmt = $dbh->prepare("SELECT SUM(weight) from tasklist where project_id = :proj_id");
+    $progresstmt->bindParam(':proj_id', $proj_id);
+    $progresstmt->execute();
+    
+    $progtotal = $progresstmt->fetchColumn();
+    
+    $progresstmt = $dbh->prepare("SELECT SUM(weight) from tasklist where project_id = :proj_id AND agile_list_name = :list_name");
+    $progresstmt->bindParam(':proj_id', $proj_id);
+    $progresstmt->bindParam(':list_name', $complistname);
+    $progresstmt->execute();
+    
+    $progcomplete = $progresstmt->fetchColumn();
+    
+    if ($progtotal == 0) {
+      return 0;
+    }
+    
+    return $progcomplete/$progtotal;
+ 
+  }
+  
+  function get_project_name($proj_id){
+    global $dbh;
+    
+    $projnamestmt = $dbh->prepare("SELECT name from projects where id = :proj_id");
+    $projnamestmt->bindParam(':proj_id', $proj_id);
+    $projnamestmt->execute();
+    
+    $projnameresult = $projnamestmt->fetchColumn();
+    return $projnameresult;
+  }
+  
+  function get_tasklist(){
+    
+    global $dbh;
+    
+    $todoliststmt = $dbh->prepare("SELECT * from tasklist");
+    $todoliststmt->execute();
+    $todoresult = $todoliststmt->fetchAll();
+    
+    return $todoresult;
+  }
   
   function nav_links($groupid = NULL){
     global $dbh;
@@ -60,4 +120,8 @@
 
     $_SESSION['nav_menus'] = $menus;
 
+  }
+  
+  function whitelist($string){
+    return preg_replace('/[^A-Za-z0-9!_@#\$%\^&*().?:\-\/\\ ]/', '', $string);
   }
