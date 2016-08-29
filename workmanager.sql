@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2016 at 12:43 AM
+-- Generation Time: Aug 29, 2016 at 04:02 PM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.19
 
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `nav_links` (
 --
 
 INSERT INTO `nav_links` (`id`, `nav_menu_id`, `nav_text`, `nav_path`, `display_order`, `hidden`) VALUES
-(32, 11, 'Projects', '/test/test.php', 1, 0),
-(33, 11, 'To-Do List', '/test/test.php', 2, 0);
+(32, 11, 'Projects', '/Projects/Work/management/projects.php', 1, 0),
+(33, 11, 'Task List', '/Projects/Work/management/tasklist.php', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -63,6 +63,51 @@ CREATE TABLE IF NOT EXISTS `nav_menus` (
 
 INSERT INTO `nav_menus` (`id`, `menu_text`, `menu_icon`) VALUES
 (11, 'Management', 'fa-area-chart');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `status` int(12) NOT NULL,
+  `priority` varchar(100) NOT NULL,
+  `deadline` date NOT NULL,
+  `asignee` varchar(100) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `deliverable` varchar(200) NOT NULL,
+  `timestamp` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `name`, `status`, `priority`, `deadline`, `asignee`, `description`, `deliverable`, `timestamp`) VALUES
+(1, 'test project', 1, 'high', '2016-08-31', 'logan', 'test project description', 'no deliverable', '2016-08-29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasklist`
+--
+
+CREATE TABLE IF NOT EXISTS `tasklist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `priority` varchar(100) NOT NULL,
+  `deadline` date NOT NULL,
+  `asignee` varchar(100) NOT NULL,
+  `notes` varchar(100) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

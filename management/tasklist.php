@@ -22,74 +22,68 @@
                 </div>
                 <!-- /.row -->
                 
-                <div class="row">
+
+		<div class="row">
 		  <div class="col-lg-12">
-                    <div class="panel panel-default">
-
-                    
-          <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add task</button> 
-	  <div class="modal inmodal" id="taskModal" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-dialog">
-	      <div class="modal-content animated bounceInRight">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		  <h4 class="modal-title">Add Task</h4>
-		</div>
-		<form class="m-t" role="form" method="post" action="tasklist_submit.php">
-		  <div class="modal-body">
-		    <div class="form-group"><label>Task:</label> <input type="text" name="name" placeholder="Enter task description" class="form-control"></div>
-		    <div class="form-group"><label>Projects:</label>
-		      <select class="form-control m-b" name="project">
-			<?php 
-			  foreach ($projects as $project){
-			?>
-			<option value="<?php echo $project['id']; ?>"> <?php echo $project['name']; ?> </option>
-			<?php } ?>
-		      </select>
-		    </div>	    
+		    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add task</button> 
+		    <div class="modal inmodal" id="taskModal" tabindex="-1" role="dialog" aria-hidden="true">
+		      <div class="modal-dialog">
+			<div class="modal-content animated bounceInRight">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			    <h4 class="modal-title">Add Task</h4>
+			  </div>
+			  <form class="m-t" role="form" method="post" action="tasklist_submit.php">
+			    <div class="modal-body">
+			      <div class="form-group"><label>Task:</label> <input type="text" name="name" placeholder="Enter task description" class="form-control"></div>
+			      <div class="form-group"><label>Projects:</label>
+				<select class="form-control m-b" name="project">
+				  <?php 
+				    foreach ($projects as $project){
+				  ?>
+				  <option value="<?php echo $project['id']; ?>"> <?php echo $project['name']; ?> </option>
+				  <?php } ?>
+				</select>
+			      </div>	    
+					
+			      <div class="form-group">
+				<label>Status:</label>
+				<select class="form-control m-b" name="status">
+				  <option value="Not Started"> Not Started </option>
+				  <option value="In Progress"> In Progress </option>
+				  <option value="Complete"> Complete </option>
+				</select>
+			      </div>
 			      
-		    <div class="form-group">
-		      <label>Status:</label>
-		      <select class="form-control m-b" name="status">
-			<option value="notstarted"> Not Started </option>
-			<option value="inprogress"> In Progress </option>
-			<option value="complete"> Complete </option>
-		      </select>
-		    </div>
-		    
-		    <div class="form-group">
-		      <label>Priority:</label>
-		      <select class="form-control m-b" name="priority">
-			<option value="notstarted"> Low </option>
-			<option value="inprogress"> Medium </option>
-			<option value="complete"> High </option>
-		      </select>
-		    </div>
-		    
-		    <div class="form-group">
-		       <div class='input-group date' id='datetimepicker1'>
-			  <input type='text' class="form-control" />
-			  <span class="input-group-addon">
-			    <span class="glyphicon glyphicon-calendar"></span>
-			  </span>
+			      <div class="form-group">
+				<label>Priority:</label>
+				<select class="form-control" name="priority">
+				  <option value="Low"> Low </option>
+				  <option value="Medium"> Medium </option>
+				  <option value="High"> High </option>
+				</select>
+			      </div>
+			      
+			      <div class="form-group">
+				<label>Deadline:</label>
+				<input type='date' name="deadline" class="form-control" />
+			      </div>
+
+			      <div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" placeholder="Enter task asignee" class="form-control"></div>
+			      
+			    </div>
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			      <button type="submit" class="btn btn-primary">Submit</button>
+			    </div>
+			    
+			  </form>    
+			</div>
 		      </div>
+
 		    </div>
 
-		    
-		    
-		  </div>
-		  <div class="modal-footer">
-		    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-		    <button type="submit" class="btn btn-primary">Submit</button>
-		  </div>
-		  
-
-		  
-		</form>    
-	      </div>
-	    </div>
-	  </div> 
-                    
+		    <div class="panel panel-default">       
                     
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -110,7 +104,6 @@
                                 <tbody>
 				   <?php
 				      $tasks = get_tasklist();
-
 				      foreach ($tasks as $task){
 				    ?>
 					<tr>
@@ -145,7 +138,7 @@
 
 					  <!-- TASK CREATED -->
 					  <td class="task-creation" align="center">
-					    Created <?php echo $task['timestamp']; ?>
+					    <?php echo $task['timestamp']; ?>
 					  </td>
 
                                         </tr>
