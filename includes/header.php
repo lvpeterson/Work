@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Work Life v0.1</a>
+                <a class="navbar-brand" href="/Projects/Work/index.html">Work Life v0.1</a>
             </div>
             <!-- /.navbar-header -->
 

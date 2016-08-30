@@ -25,7 +25,8 @@
 
 		<div class="row">
 		  <div class="col-lg-12">
-		    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add task</button> 
+		  
+		    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add Task</button> 
 		    <div class="modal inmodal" id="taskModal" tabindex="-1" role="dialog" aria-hidden="true">
 		      <div class="modal-dialog">
 			<div class="modal-content animated bounceInRight">
@@ -69,7 +70,7 @@
 				<input type='date' name="deadline" class="form-control" />
 			      </div>
 
-			      <div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" placeholder="Enter task asignee" class="form-control"></div>
+			      <div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="Logan" placeholder="Enter task asignee" class="form-control"></div>
 			      
 			    </div>
 			    <div class="modal-footer">
@@ -80,7 +81,6 @@
 			  </form>    
 			</div>
 		      </div>
-
 		    </div>
 
 		    <div class="panel panel-default">       
@@ -99,11 +99,13 @@
                                         <th>Asignee</th>
                                         <th>Notes</th>
                                         <th>Created</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 				   <?php
 				      $tasks = get_tasklist();
+				      get_notes();
 				      foreach ($tasks as $task){
 				    ?>
 					<tr>
@@ -133,14 +135,108 @@
 
 					  <!-- TASK NOTES -->
 					  <td class="task-notes" align="center">
-					    <?php echo $task['notes']; ?>
+					  
+					  <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#noteModal<?php echo $task['id']; ?>"> <i class="fa fa-plus"></i></button> 
+					  <div class="modal inmodal" id="noteModal<?php echo $task['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+					    <div class="modal-dialog">
+					      <div class="modal-content animated bounceInRight">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						  <h4 class="modal-title">Add Note</h4>
+						</div>
+						<form class="m-t" role="form" method="post" action="addnote_submit.php?task=<?php echo $task['id'];?>&project=<?php echo $task['project_id']; ?>">
+						  <div class="modal-body">
+						    <div class="form-group"><label>Note:</label> <input type="text" name="note" placeholder="Enter note" class="form-control"></div>
+						  </div>
+						  <div class="modal-footer">
+						    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+						    <button type="submit" class="btn btn-primary">Submit</button>
+						  </div>
+						  
+						</form>    
+					      </div>
+					    </div>
+
+					  </div>
+					  
+					    <table>
+					      <tbody>
+					    <?php 
+					      foreach($_SESSION['notes'] as $note){
+						if ($task['id'] == $note['task_id']){
+					    ?>
+						  <tr>
+						    <td>
+						      <?php echo $note['note']; ?>
+						    </td>
+						  </tr>
+					  <?php }
+					      }
+					    ?>
+					      </tbody>
+					    </table>
+					    
 					  </td>
 
 					  <!-- TASK CREATED -->
 					  <td class="task-creation" align="center">
 					    <?php echo $task['timestamp']; ?>
 					  </td>
+					  
+					  <!-- ACTIONS -->
+					  <td class="actions">
+					  
+					      <button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal<?php echo $task['id']; ?>"><i class="fa fa-pencil"></i> Edit </button> 
+					      <div class="modal inmodal" id="editModal<?php echo $task['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+						  <div class="modal-content animated bounceInRight">
+						    <div class="modal-header">
+						      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						      <h4 class="modal-title">Edit Task</h4>
+						    </div>
+						    <form class="m-t" role="form" method="post" action="updatetask_submit.php?task=<?php echo $task['id'];?>">
+						      <div class="modal-body">
+							<div class="form-group"><label>Title:</label> <input type="text" name="name" value="<?php echo $task['name']; ?>" class="form-control"></div>
+							
+							<div class="form-group">
+							  <label>Status:</label>
+							  <select class="form-control m-b" name="status">
+							    <option value="Not Started"> Not Started </option>
+							    <option value="In Progress"> In Progress </option>
+							    <option value="Complete"> Complete </option>
+							  </select>
+							</div>
+							
+							<div class="form-group">
+							  <label>Priority:</label>
+							  <select class="form-control" name="priority">
+							    <option value="Low"> Low </option>
+							    <option value="Medium"> Medium </option>
+							    <option value="High"> High </option>
+							  </select>
+							</div>
+							
+							<div class="form-group">
+							  <label>Deadline:</label>
+							  <input type='date' name="deadline" class="form-control" />
+							</div>
+							  
+							<div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="<?php echo $task['asignee']; ?>" class="form-control"></div>
+							
+						      </div>
 
+							  <div class="modal-footer">
+							    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+							    <button type="submit" class="btn btn-primary">Submit</button>
+							  </div>
+						      </form>
+						    </div>
+						  </div>
+						</div>
+						
+						<button type="submit" style="border: none; background: none;" class="deleteproj" onclick="deleteproject(<?php echo $task['id']; ?>)"><i class="fa fa-trash"></i></button>
+					  </td>
+					  
                                         </tr>
 				  <?php } ?>
                                 </tbody>

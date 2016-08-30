@@ -18,6 +18,17 @@
   
   //---------------------------------------------------------------------------------------------------------//
  
+  function get_notes(){
+    
+    global $dbh;
+    
+    $notestmt = $dbh->prepare("SELECT * from notes");
+    $notestmt->execute();
+    $noteresult = $notestmt->fetchAll();
+      
+    $_SESSION['notes'] = $noteresult;
+  }
+  
   function get_projects(){
   
     global $dbh;

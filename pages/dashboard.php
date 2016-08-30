@@ -5,7 +5,15 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+		    <h2>Dashboard</h2>
+		      <ol class="breadcrumb">
+			<li>
+			  <a href="/Projects/Work/index.html">Home</a>
+			</li>
+			<li class="active">
+			  <strong>Dashboard</strong>
+			</li>
+		      </ol>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
