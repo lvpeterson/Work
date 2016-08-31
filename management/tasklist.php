@@ -234,7 +234,7 @@
 						  </div>
 						</div>
 						
-						<button type="submit" style="border: none; background: none;" class="deleteproj" onclick="deleteproject(<?php echo $task['id']; ?>)"><i class="fa fa-trash"></i></button>
+						<button type="submit" style="border: none; background: none;" class="deletetask" onclick="deletetask(<?php echo $task['id']; ?>)"><i class="fa fa-trash"></i></button>
 					  </td>
 					  
                                         </tr>
@@ -256,6 +256,20 @@
         
         
       <script type="text/javascript">
+      
+	function deletetask(taskid){
+	  $.ajax({
+	      type: "POST",
+	      dataType: "json",
+	      url: "/Projects/Work/management/deletetask_submit.php",
+	      data: {
+		  id: taskid
+	      },
+	  });
+	  location.reload();
+	}
+      
+      
 	$(function () {
 	    $('#datetimepicker1').datetimepicker();
 	});

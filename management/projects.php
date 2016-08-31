@@ -151,6 +151,59 @@
 					  <td class="project-creation" align="center">
 					    Created <?php echo $project['timestamp']; ?>
 					  </td>
+					  <!-- ACTIONS -->
+					  <td class="actions">
+					    <button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal<?php echo $project['id']; ?>"><i class="fa fa-pencil"></i> Edit </button> 
+					      <div class="modal inmodal" id="editModal<?php echo $project['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+						  <div class="modal-content animated bounceInRight">
+						    <div class="modal-header">
+						      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						      <h4 class="modal-title">Edit Task</h4>
+						    </div>
+						    <form class="m-t" role="form" method="post" action="updateproject_submit.php?project=<?php echo $project['id'];?>">
+						      <div class="modal-body">
+							<div class="form-group"><label>Title:</label> <input type="text" name="name" value="<?php echo $project['name']; ?>" class="form-control"></div>
+							
+							<div class="form-group">
+							  <label>Status:</label>
+							  <select class="form-control m-b" name="status">
+							    <option value="1"> Active </option>
+							    <option value="0"> Inactive </option>
+							  </select>
+							</div>
+							
+							<div class="form-group">
+							  <label>Priority:</label>
+							  <select class="form-control" name="priority">
+							    <option value="Low"> Low </option>
+							    <option value="Medium"> Medium </option>
+							    <option value="High"> High </option>
+							  </select>
+							</div>
+							
+							<div class="form-group">
+							  <label>Deadline:</label>
+							  <input type='date' name="deadline" class="form-control" />
+							</div>
+							  
+							<div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="<?php echo $project['asignee']; ?>" class="form-control"></div>
+							<div class="form-group"><label>Descripption:</label> <input type="text" name="description" value="<?php echo $project['description']; ?>" class="form-control"></div>
+						      </div>
+
+							  <div class="modal-footer">
+							    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+							    <button type="submit" class="btn btn-primary">Submit</button>
+							  </div>
+						      </form>
+						    </div>
+						  </div>
+						</div>
+						
+						<button type="submit" style="border: none; background: none;" class="deleteproject" onclick="deleteproject(<?php echo $project['id']; ?>)"><i class="fa fa-trash"></i></button>
+					  
+					  
+					  </td>
 
                                         </tr>
 				  <?php } ?>
@@ -167,6 +220,21 @@
 
         </div>
         <!-- /#page-wrapper -->
+        
+      <script type="text/javascript">
+      
+	function deleteproject(projid){
+	  $.ajax({
+	      type: "POST",
+	      dataType: "json",
+	      url: "/Projects/Work/management/deleteproject_submit.php",
+	      data: {
+		  id: projid
+	      },
+	  });
+	  location.reload();
+	}
+      </script>
 
 <?php 
   include "/var/www/html/Projects/Work/includes/footer.php"; 
