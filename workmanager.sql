@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2016 at 04:02 PM
+-- Generation Time: Aug 31, 2016 at 04:03 PM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.19
 
@@ -67,6 +67,21 @@ INSERT INTO `nav_menus` (`id`, `menu_text`, `menu_icon`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notes`
+--
+
+CREATE TABLE IF NOT EXISTS `notes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `note` varchar(200) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
@@ -79,16 +94,18 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `asignee` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   `deliverable` varchar(200) NOT NULL,
-  `timestamp` date NOT NULL,
+  `created` date NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `name`, `status`, `priority`, `deadline`, `asignee`, `description`, `deliverable`, `timestamp`) VALUES
-(1, 'test project', 1, 'high', '2016-08-31', 'logan', 'test project description', 'no deliverable', '2016-08-29');
+INSERT INTO `projects` (`id`, `name`, `status`, `priority`, `deadline`, `asignee`, `description`, `deliverable`, `created`, `timestamp`) VALUES
+(1, '', 0, '', '0000-00-00', '', '', '', '2016-08-31', '2016-08-31 22:50:41'),
+(2, 'test', 1, 'High', '0000-00-00', 'Logan', 'test', '', '2016-08-31', '2016-08-31 22:51:54');
 
 -- --------------------------------------------------------
 
@@ -104,10 +121,18 @@ CREATE TABLE IF NOT EXISTS `tasklist` (
   `deadline` date NOT NULL,
   `asignee` varchar(100) NOT NULL,
   `notes` varchar(100) NOT NULL,
+  `created` date NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `project_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tasklist`
+--
+
+INSERT INTO `tasklist` (`id`, `name`, `status`, `priority`, `deadline`, `asignee`, `notes`, `created`, `timestamp`, `project_id`) VALUES
+(1, 'test', 'Not Started', 'Medium', '2016-08-21', 'Logan', '', '2016-08-31', '2016-08-31 22:57:10', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
