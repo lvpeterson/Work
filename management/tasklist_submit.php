@@ -10,7 +10,7 @@
   $asignee = whitelist($_POST['asignee']);
     
   
-  $addtaskstmt = $dbh->prepare("INSERT INTO tasklist (name, status, priority, deadline, asignee, project_id) VALUES (:name, :status, :priority, :deadline, :asignee, :project_id)");
+  $addtaskstmt = $dbh->prepare("INSERT INTO tasklist (name, status, priority, deadline, asignee, project_id, created) VALUES (:name, :status, :priority, :deadline, :asignee, :project_id, CURDATE())");
   
   $addtaskstmt->bindParam(':name', $taskname);
   $addtaskstmt->bindParam(':status', $status);

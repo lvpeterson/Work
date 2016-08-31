@@ -99,6 +99,7 @@
                                         <th>Asignee</th>
                                         <th>Notes</th>
                                         <th>Created</th>
+                                        <th>Last Updated</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -180,6 +181,11 @@
 
 					  <!-- TASK CREATED -->
 					  <td class="task-creation" align="center">
+					    <?php echo $task['created']; ?>
+					  </td>
+					  
+					  <!-- TASK UPDATED -->
+					  <td class="task-creation" align="center">
 					    <?php echo $task['timestamp']; ?>
 					  </td>
 					  
@@ -200,25 +206,25 @@
 							
 							<div class="form-group">
 							  <label>Status:</label>
-							  <select class="form-control m-b" name="status">
-							    <option value="Not Started"> Not Started </option>
-							    <option value="In Progress"> In Progress </option>
-							    <option value="Complete"> Complete </option>
+							  <select class="form-control m-b" name="status" value="<?php echo $task['status']; ?>">
+							    <option value="Not Started" <?php if ($task['status'] == "Not Started"){ echo("selected"); } ?>> Not Started </option>
+							    <option value="In Progress" <?php if ($task['status'] == "In Progress"){ echo("selected"); } ?>> In Progress </option>
+							    <option value="Complete" <?php if ($task['status'] == "Complete"){ echo("selected"); } ?>> Complete </option>
 							  </select>
 							</div>
 							
 							<div class="form-group">
 							  <label>Priority:</label>
 							  <select class="form-control" name="priority">
-							    <option value="Low"> Low </option>
-							    <option value="Medium"> Medium </option>
-							    <option value="High"> High </option>
+							    <option value="Low" <?php if ($task['priority'] == "Low"){ echo("selected"); } ?>> Low </option>
+							    <option value="Medium" <?php if ($task['priority'] == "Medium"){ echo("selected"); } ?>> Medium </option>
+							    <option value="High" <?php if ($task['priority'] == "High"){ echo("selected"); } ?>> High </option>
 							  </select>
 							</div>
 							
 							<div class="form-group">
 							  <label>Deadline:</label>
-							  <input type='date' name="deadline" class="form-control" />
+							  <input type='date' name="deadline" class="form-control" value="<?php echo $task['deadline']; ?>"/>
 							</div>
 							  
 							<div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="<?php echo $task['asignee']; ?>" class="form-control"></div>

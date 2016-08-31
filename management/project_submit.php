@@ -8,9 +8,8 @@
   $deadline = whitelist($_POST['deadline']);
   $asignee = whitelist($_POST['asignee']);
   $description = whitelist($_POST['description']);
-    
-  
-  $addprojstmt = $dbh->prepare("INSERT INTO projects (name, status, priority, deadline, asignee, description) VALUES (:name, :status, :priority, :deadline, :asignee, :description)");
+
+  $addprojstmt = $dbh->prepare("INSERT INTO projects (name, status, priority, deadline, asignee, description, created) VALUES (:name, :status, :priority, :deadline, :asignee, :description, CURDATE())");
   
   $addprojstmt->bindParam(':name', $projectname);
   $addprojstmt->bindParam(':status', $status);

@@ -94,6 +94,7 @@
                                         <th>Deliverable</th>
                                         <th>% Done</th>
                                         <th>Created</th>
+                                        <th>Last Updated</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -107,7 +108,7 @@
 					<tr>
 					  <!-- PROJECT TITLE -->
 					  <td class="project-title" align="center">
-					      <a href="<?php echo $projurl; ?>"><?php echo $project['name']; ?></a>
+					      <?php echo $project['name']; ?>
 					  </td>
 					  <!-- PROJECT STATUS -->
 					  <td class="project-status" align="center">
@@ -149,8 +150,14 @@
 					  </td>-->
 					  <!-- PROJECT CREATED -->
 					  <td class="project-creation" align="center">
-					    Created <?php echo $project['timestamp']; ?>
+					    <?php echo $project['created']; ?>
 					  </td>
+					  
+					  <!-- PROJECT UPDATED -->
+					  <td class="project-creation" align="center">
+					    <?php echo $project['timestamp']; ?>
+					  </td>
+					  
 					  <!-- ACTIONS -->
 					  <td class="actions">
 					    <button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal<?php echo $project['id']; ?>"><i class="fa fa-pencil"></i> Edit </button> 
@@ -168,23 +175,23 @@
 							<div class="form-group">
 							  <label>Status:</label>
 							  <select class="form-control m-b" name="status">
-							    <option value="1"> Active </option>
-							    <option value="0"> Inactive </option>
+							    <option value="1" <?php if ($project['status'] == "1"){ echo("selected"); } ?>> Active </option>
+							    <option value="0" <?php if ($project['status'] == "0"){ echo("selected"); } ?>> Inactive </option>
 							  </select>
 							</div>
 							
 							<div class="form-group">
 							  <label>Priority:</label>
 							  <select class="form-control" name="priority">
-							    <option value="Low"> Low </option>
-							    <option value="Medium"> Medium </option>
-							    <option value="High"> High </option>
+							    <option value="Low" <?php if ($project['priority'] == "Low"){ echo("selected"); } ?>> Low </option>
+							    <option value="Medium" <?php if ($project['priority'] == "Medium"){ echo("selected"); } ?>> Medium </option>
+							    <option value="High" <?php if ($project['priority'] == "High"){ echo("selected"); } ?>> High </option>
 							  </select>
 							</div>
 							
 							<div class="form-group">
 							  <label>Deadline:</label>
-							  <input type='date' name="deadline" class="form-control" />
+							  <input type='date' name="deadline" class="form-control" value="<?php echo $project['deadline']; ?> />
 							</div>
 							  
 							<div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="<?php echo $project['asignee']; ?>" class="form-control"></div>
