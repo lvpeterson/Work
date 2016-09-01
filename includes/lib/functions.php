@@ -17,12 +17,76 @@
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   //---------------------------------------------------------------------------------------------------------//
+  function get_date_offset(){
+    if( date("D") == "Sun" ){
+      return array(0,6);
+    }
+    if( date("D") == "Mon" ){
+      return array(1,5);
+    }
+    if( date("D") == "Tue" ){
+      return array(2,4);
+    }
+    if( date("D") == "Wed" ){
+      return array(3,3);
+    }
+    if( date("D") == "Thu" ){
+      return array(4,2);
+    }
+    if( date("D") == "Fri" ){
+      return array(5,1);
+    }
+    if( date("D") == "Sat" ){
+      return array(6,0);
+    }
+  }
+  
+  function get_current_week(){
+    $thisweek = [];
+    list($negativeoff, $positiveoff) = get_date_offset();
+    // Get negative offset and push to array
+    $count = 0;
+    for($count = 1; $count < $negativeoff+1; $count++){
+      array_push($thisweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")-$count, date("Y"))));
+    }
+    // Get today and push to array
+      //array_push($thisweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d"), date("Y"))));
+    // Get positive offset and push to array
+    for($count = 0; $count < $positiveoff+1; $count++){
+      array_push($thisweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+$count, date("Y"))));
+    }
+    return $thisweek;
+  }
+  
+  function get_next_week(){
+    $nextweek = [];
+    list($negativeoff, $positiveoff) = get_date_offset();
+    // Get negative offset and push to array
+    $count = 0;
+    for($count = 1; $count < $negativeoff+1; $count++){
+      array_push($nextweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d") + 7 - $count, date("Y"))));
+    }
+    // Get today and push to array
+      array_push($nextweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d") + 7, date("Y"))));
+    // Get positive offset and push to array
+    for($count = 0; $count < $positiveoff+1; $count++){
+      array_push($nextweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d") + 7 + $count, date("Y"))));
+    }
+    return $nextweek;
+  }
  
-  function get_notes(){
+  function get_notes($task_id = NULL){
     
     global $dbh;
+
     
-    $notestmt = $dbh->prepare("SELECT * from notes");
+    if ($task_id == NULL){
+      $notestmt = $dbh->prepare("SELECT * from notes");
+    }
+    else{
+      $notestmt = $dbh->prepare("SELECT * from notes where task_id = :task_id");
+      $notestmt->bindParam(':task_id', $task_id);
+    }
     $notestmt->execute();
     $noteresult = $notestmt->fetchAll();
       
