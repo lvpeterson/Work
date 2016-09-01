@@ -53,7 +53,7 @@
     
     $progtotal = $progresstmt->fetchColumn();
     
-    $progresstmt = $dbh->prepare("SELECT SUM(weight) from tasklist where project_id = :proj_id AND agile_list_name = :list_name");
+    $progresstmt = $dbh->prepare("SELECT SUM(weight) from tasklist where project_id = :proj_id AND status = :list_name");
     $progresstmt->bindParam(':proj_id', $proj_id);
     $progresstmt->bindParam(':list_name', $complistname);
     $progresstmt->execute();
