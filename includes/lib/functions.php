@@ -154,6 +154,28 @@
     return $todoresult;
   }
   
+  function get_webapp_details($webappid){
+    global $dbh;
+    
+    $webappnamestmt = $dbh->prepare("SELECT * from webapptests where id = :id");
+    $webappnamestmt->bindParam(':id', $webappid);
+    $webappnamestmt->execute();
+    $webappnameresult = $webappnamestmt->fetchAll();
+    
+    return $webappnameresult[0];
+  }
+  
+  function get_webapptests(){
+    global $dbh;
+    
+    $webappteststmt = $dbh->prepare("SELECT * from webapptests");
+    $webappteststmt->execute();
+    $webapptestresult = $webappteststmt->fetchAll();
+    
+    return $webapptestresult;
+  
+  }
+  
   function nav_links($groupid = NULL){
     global $dbh;
     

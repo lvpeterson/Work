@@ -195,7 +195,7 @@
 							</div>
 							  
 							<div class="form-group"><label>Asignee:</label> <input type="text" name="asignee" value="<?php echo $project['asignee']; ?>" class="form-control"></div>
-							<div class="form-group"><label>Descripption:</label> <input type="text" name="description" value="<?php echo $project['description']; ?>" class="form-control"></div>
+							<div class="form-group"><label>Description:</label> <input type="text" name="description" value="<?php echo $project['description']; ?>" class="form-control"></div>
 						      </div>
 
 							  <div class="modal-footer">
