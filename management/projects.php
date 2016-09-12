@@ -21,10 +21,10 @@
             </div>
             <!-- /.row -->
             
-            <div class="row">
-                <div class="col-lg-12">
-		  
-		  <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#projectModal"> <i class="fa fa-plus"></i> Add Project</button> 
+               <div class="row">
+                <div class="col-lg-12">            
+
+		  <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px;" data-toggle="modal" data-target="#projectModal"> <i class="fa fa-plus"></i> Add Project</button> 
 		    <div class="modal inmodal" id="projectModal" tabindex="-1" role="dialog" aria-hidden="true">
 		      <div class="modal-dialog">
 			<div class="modal-content animated bounceInRight">
@@ -73,8 +73,7 @@
 		    </div>
                 
                 
-                
-                
+             
                 
                 
                     <div class="panel panel-default">

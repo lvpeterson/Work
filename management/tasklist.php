@@ -22,11 +22,10 @@
                 </div>
                 <!-- /.row -->
                 
-
-		<div class="row">
+		  <div class="row">
 		  <div class="col-lg-12">
 		  
-		    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add Task</button> 
+		    <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px;" data-toggle="modal" data-target="#taskModal"> <i class="fa fa-plus"></i> Add Task</button> 
 		    <div class="modal inmodal" id="taskModal" tabindex="-1" role="dialog" aria-hidden="true">
 		      <div class="modal-dialog">
 			<div class="modal-content animated bounceInRight">
@@ -82,6 +81,8 @@
 			</div>
 		      </div>
 		    </div>
+               
+
 
 		    <div class="panel panel-default">       
                     
@@ -137,7 +138,7 @@
 					  <!-- TASK NOTES -->
 					  <td class="task-notes" align="center">
 					  
-					  <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#noteModal<?php echo $task['id']; ?>"> <i class="fa fa-plus"></i></button> 
+					  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#noteModal<?php echo $task['id']; ?>"> <i class="fa fa-plus"></i></button> 
 					  <div class="modal inmodal" id="noteModal<?php echo $task['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 					    <div class="modal-dialog">
 					      <div class="modal-content animated bounceInRight">

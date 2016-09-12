@@ -165,6 +165,17 @@
     return $webappnameresult[0];
   }
   
+  function get_webapp_domains($webappid){
+    global $dbh;
+   
+    $webappdomainstmt = $dbh->prepare("SELECT * from webapp_domains where webapp_id = :webapp_id");
+    $webappdomainstmt->bindParam(':webapp_id', $webappid);
+    $webappdomainstmt->execute();
+    $webappdomainresult = $webappdomainstmt->fetchAll();
+    
+    return $webappdomainresult;
+  }
+  
   function get_webapptests(){
     global $dbh;
     

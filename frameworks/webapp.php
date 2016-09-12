@@ -5,29 +5,26 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-		      <h2>Web App Framework</h2>
-		      <ol class="breadcrumb">
-			<li>
-			  <a href="/Projects/Work/index.html">Home</a>
-			</li>
-			<li class="active">
-			  <strong>Web App Framework</strong>
-			</li>
-		      </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+	  <div class="row">
+	      <div class="col-lg-12">
+		<h2>Web App Framework</h2>
+		  <ol class="breadcrumb">
+		    <li>
+		      <a href="/Projects/Work/index.html">Home</a>
+		    </li>
+		    <li class="active">
+		     <strong>Web App Framework</strong>
+		    </li>
+		  </ol>
+	      </div>
+	      <!-- /.col-lg-12 -->
+	    </div>
+	    <!-- /.row -->
             
                 <div class="row">
                 <div class="col-lg-12">
 		  
-		  <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#testModal"> <i class="fa fa-plus"></i> New Test</button> 
+		  <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px;" data-toggle="modal" data-target="#testModal"> <i class="fa fa-plus"></i> New Test</button> 
 		    <div class="modal inmodal" id="testModal" tabindex="-1" role="dialog" aria-hidden="true">
 		      <div class="modal-dialog">
 			<div class="modal-content animated bounceInRight">
@@ -139,6 +136,8 @@
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -149,6 +148,7 @@
             
         </div>
         <!-- /#page-wrapper -->
+
         
       <script type="text/javascript">
       
