@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 09, 2016 at 04:26 PM
+-- Generation Time: Sep 12, 2016 at 04:49 PM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.19
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 --
 
 INSERT INTO `projects` (`id`, `name`, `status`, `priority`, `deadline`, `asignee`, `description`, `deliverable`, `created`, `timestamp`) VALUES
-(1, '', 0, '', '0000-00-00', '', '', '', '2016-08-31', '2016-08-31 22:50:41'),
+(1, 'test 1', 0, 'Low', '0000-00-00', 'Logan', 'Test description 2', '', '2016-08-31', '2016-09-12 21:38:56'),
 (2, 'test', 1, 'High', '0000-00-00', 'Logan', 'test', '', '2016-08-31', '2016-08-31 22:51:54');
 
 -- --------------------------------------------------------
@@ -166,6 +166,28 @@ CREATE TABLE IF NOT EXISTS `webapptests` (
 
 INSERT INTO `webapptests` (`id`, `testname`, `description`, `asignee`, `created`) VALUES
 (8, 'working test', 'working test application', 'Logan', '2016-09-09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `webapp_domains`
+--
+
+CREATE TABLE IF NOT EXISTS `webapp_domains` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(250) NOT NULL,
+  `added` date NOT NULL,
+  `webapp_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `webapp_domains`
+--
+
+INSERT INTO `webapp_domains` (`id`, `domain`, `added`, `webapp_id`) VALUES
+(2, 'test domain 2', '2016-09-12', 8),
+(3, 'test second domain', '2016-09-12', 8);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
