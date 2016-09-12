@@ -110,6 +110,7 @@
 	  <div class="row">
 	    <div class="col-lg-10">
 	      <input type="checkbox" name="nikto" value="completed"> Run Nikto
+	      <p> Create either file upload or paste box to upload the results of the Nikto scan for easy access </p>
 	      <input type="checkbox" style="margin-left: 10px;" name="rootdir" value="completed"> Request Server's Root Directory
 	       <input type="checkbox" style="margin-left: 10px;" name="rootdirua" value="completed"> Request Server's Root Directory With Different User-Agent Headers
 
