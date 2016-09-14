@@ -106,15 +106,20 @@
 			      
 			      </td>
 
-			    </tr>
-		      <?php } ?>
-		    </tbody>
-		</table>
+			      </tr>
+			<?php } ?>
+		      </tbody>
+		  </table>
 		<!-- /.table-responsive -->
 		</div>
 		<!-- /.table-responsive -->
 	      </div>
 	      <!-- /.col-lg-5 -->
+	      <div class="col-lg-5" align="center">
+		<button type="button" class="btn btn-primary btn-sm" style="margin-top: 75px;"><i class="fa fa-bug"></i> Run Bug Bounty Report </button> 
+		<button type="button" class="btn btn-primary btn-sm" style="margin-left: 10px; margin-top: 75px;" ><i class="fa fa-folder-open-o"></i> Run Full Report </button> 
+	      
+	      </div>
 	    </div>
 	    <!-- /.row -->
 	    
@@ -130,6 +135,7 @@
 		    <li class=""><a href="#tab-6" data-toggle="tab">Application Hosting Tests</a></li>
 		    <li class=""><a href="#tab-7" data-toggle="tab">Miscellaneous Checks</a></li>
 		    <li class=""><a href="#tab-8" data-toggle="tab">Information Leakage</a></li>
+		    <li class=""><a href="#tab-9" data-toggle="tab">Findings</a></li>
 		</ul>
 	      </div>
 	    
@@ -157,6 +163,9 @@
 	      </div>
 	      <div class="tab-pane" id="tab-8">
 		<?php include "webappdetails/appinfoleak.php"?>
+	      </div>
+	      <div class="tab-pane" id="tab-9">
+		<?php include "webappdetails/findings.php"?>
 	      </div>
 	  </div>
 	</div>

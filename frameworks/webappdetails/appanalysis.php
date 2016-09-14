@@ -52,3 +52,58 @@
     <!-- /.col-lg-12 -->
   </div>
   <!-- /.row -->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+	<div class="panel-heading">
+	  <i class="fa fa-code-fork fa-fw"></i> Identify the Technologies Used
+	</div>
+	<!-- /.panel-heading -->
+	
+	<div class="panel-body">
+	  <div class="row">
+	    <div class="col-lg-10">
+	      <input type="checkbox" name="nikto" value="completed"> HTTPrint Tool Ran
+		<p> Create either file upload or paste box to upload the results of the tool </p>
+	      <div class="form-group"><label>Technologies:</label> <p> New input box generated after each item is added to keep track of all technologies implemented on client side </p> </div> 
+	    </div>
+	    <!-- /.col-lg-10 -->
+	  </div>
+	  <!-- /.row -->
+	</div>
+	<!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+	<div class="panel-heading">
+	  <i class="fa fa-map-o fa-fw"></i> Map the Attack Surface
+	</div>
+	<!-- /.panel-heading -->
+	
+	<div class="panel-body">
+	  <div class="row">
+	    <div class="col-lg-10">
+	      <p> ascertain the likely internal structure and functionality of the server-side app and the mechanisms it uses behind the scenes to deliver the behavior that is visible from the client perspective
+		for example, a function to retrieve customer orders is likely to be interacting with a database  - input box with a drop down describing common functionality and link location</p>
+	      <div class="form-group"><label>Common Vulnerabilities:</label> <p> Based on input from above generate list of common vulnerabilities associated with each functionality found </p> </div> 
+	      <div class="form-group"><label>Plan of Attack:</label> <p> use information from step 2 to drive the assessment plan of attack </p> </div> 
+	    </div>
+	    <!-- /.col-lg-10 -->
+	  </div>
+	  <!-- /.row -->
+	</div>
+	<!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
