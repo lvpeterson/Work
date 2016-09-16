@@ -17,6 +17,13 @@
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   //---------------------------------------------------------------------------------------------------------//
+  
+  function generate_google_hack($domain){
+    $googlehacks = [];
+  
+  
+  }
+  
   function get_date_offset(){
     if( date("D") == "Sun" ){
       return array(0,6);
