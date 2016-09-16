@@ -5,7 +5,10 @@
 	<div class="panel-heading">
 	  <i class="fa fa-search fa-fw"></i> Explore Visible Content
 	      <div class="pull-right">
-		<button type="submit" style="border: none; background: none;" class="deletetask" onclick=""><i class="fa fa-question"></i></button>
+		<button id="LearnMoreBtn" type="submit" style="border: none; background: none;" class="showhelp(this.id)" onclick=""><i class="fa fa-question"></i></button>
+		<div class="overlay"></div>
+		<div class="popup"> contents here <button id="CloseBtn">close</button></div>
+		
 		  <select name="status">
 		    <option value="Not Started"> Not Started </option>
 		    <option value="In Progress"> In Progress </option>

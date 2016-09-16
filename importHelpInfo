@@ -1,0 +1,17 @@
+<?php
+  
+  include("/var/www/html/Projects/Work/includes/lib/functions.php");
+  
+  $helpInfo = file('/var/www/html/Projects/Work/test.csv');
+  
+  foreach ($helpInfo as $helpInfoLine) {
+    $lineSplit = explode(",", $helpInfoLine); // 0 = step num 1 = data
+    echo strlen($lineSplit[0]);
+    /*$importstmt = $dbh->prepare("INSERT INTO help_info (stepnum, data, category) VALUES (:stepnum, :data, :category)");
+    $importstmt->bindParam(':domain', trim($domain));
+    $importstmt->bindParam(':timestamp', $timestamp);
+    $imp*/ortstmt->execute();
+    break;
+  }
+  
+?>

@@ -7,6 +7,7 @@
   $webappdetails = get_webapp_details($webappid);
 ?>
 
+
         <!-- Page Content -->
         <div id="page-wrapper">
 	  <div class="row">
@@ -174,6 +175,24 @@
 	<!-- ./row -->
       </div>
       <!-- /#page-wrapper -->
+      
+      <script>
+	window.onload = function() {closebtn
+	  document.getElementById("LearnMoreBtn").onclick = function(){
+	    var overlay = document.getElementById("overlay");
+	    var popup = document.getElementById("popup");
+	    overlay.style.display = "block";
+	    popup.style.display = "block";
+	  };
+      
+	  document.getElementById("CloseBtn").onclick = function(){
+	    var overlay = document.getElementById("overlay");
+	    var popup = document.getElementById("popup");
+	    overlay.style.display = "none";
+	    popup.style.display = "none";      
+	  }
+	};
+      </script>
 
 <?php 
   include "/var/www/html/Projects/Work/includes/footer.php"; 
