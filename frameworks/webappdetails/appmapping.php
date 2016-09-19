@@ -5,10 +5,37 @@
 	<div class="panel-heading">
 	  <i class="fa fa-search fa-fw"></i> Explore Visible Content
 	      <div class="pull-right">
-		<button id="LearnMoreBtn" type="submit" style="border: none; background: none;" class="showhelp(this.id)" onclick=""><i class="fa fa-question"></i></button>
-		<div class="overlay"></div>
-		<div class="popup"> contents here <button id="CloseBtn">close</button></div>
-		
+	      <!-- Help Button -->
+		<button type="button" style="border: none; background: none;" data-toggle="modal" data-target="#helpModalEVC"><i class="fa fa-question"></i></button> 
+		  <div class="modal fade" id="helpModalEVC" tabindex="-1" role="dialog" aria-hidden="true">
+		    <div class="modal-dialog modal-lg">
+		      <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			  <h4 class="modal-title">Help: Explore Visible Content</h4>
+			</div>
+			<div class="modal-body">
+			    <ol>
+			      <?php 
+				foreach ($_SESSION['help_info'] as $note){
+				  if ($note['category'] == "Explore Visible Content"){
+			      ?>
+				    <li><?php echo $note['data']?></li>
+			      <?php
+				  }
+				}
+			      ?>
+			    </ol>
+
+			  </div>
+
+			      <div class="modal-footer">
+				<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			      </div>
+			</div>
+		      </div>
+		    </div>
+		  <!-- Status Dropdown -->
 		  <select name="status">
 		    <option value="Not Started"> Not Started </option>
 		    <option value="In Progress"> In Progress </option>
@@ -41,7 +68,37 @@
 	<div class="panel-heading">
 	  <i class="fa fa-google fa-fw"></i> Consult Public Resources
 	    <div class="pull-right">
-	    <button type="submit" style="border: none; background: none;" class="deletetask" onclick=""><i class="fa fa-question"></i></button>
+	    <!-- Help Button -->
+	      <button type="button" style="border: none; background: none;" data-toggle="modal" data-target="#helpModalCPR"><i class="fa fa-question"></i></button> 
+		<div class="modal fade" id="helpModalCPR" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">Help: Consult Public Resources</h4>
+		      </div>
+			<div class="modal-body">
+			  <ol>
+			    <?php 
+			      foreach ($_SESSION['help_info'] as $note){
+				if ($note['category'] == "Consult Public Resources"){
+			    ?>
+				  <li><?php echo $note['data']?></li>
+			    <?php
+				}
+			      }
+			    ?>
+			  </ol>
+
+			</div>
+
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			    </div>
+		      </div>
+		    </div>
+		  </div>
+	      <!-- Status Dropdown -->
 	      <select name="status">
 		<option value="Not Started"> Not Started </option>
 		<option value="In Progress"> In Progress </option>
@@ -101,7 +158,37 @@
 	<div class="panel-heading">
 	  <i class="fa fa-snapchat-ghost fa-fw"></i> Discover Hidden Content
 	    <div class="pull-right">
-	      <button type="submit" style="border: none; background: none;" class="deletetask" onclick=""><i class="fa fa-question"></i></button>
+	      <!-- Help Button -->
+	      <button type="button" style="border: none; background: none;" data-toggle="modal" data-target="#helpModalDHC"><i class="fa fa-question"></i></button> 
+		<div class="modal fade" id="helpModalDHC" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">Help: Discover Hidden Content</h4>
+		      </div>
+			<div class="modal-body">
+			  <ol>
+			    <?php 
+			      foreach ($_SESSION['help_info'] as $note){
+				if ($note['category'] == "Discover Hidden Content"){
+			    ?>
+				  <li><?php echo $note['data']?></li>
+			    <?php
+				}
+			      }
+			    ?>
+			  </ol>
+
+			</div>
+
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			    </div>
+		      </div>
+		    </div>
+		  </div>
+	      <!-- Status Dropdown -->
 	      <select name="status">
 		<option value="Not Started"> Not Started </option>
 		<option value="In Progress"> In Progress </option>
@@ -134,7 +221,38 @@
 	<div class="panel-heading">
 	  <i class="fa fa-cog fa-fw"></i> Discover Default Content
 	    <div class="pull-right">
-	      <button type="submit" style="border: none; background: none;" class="deletetask" onclick=""><i class="fa fa-question"></i></button>
+	      <!-- Help Button -->
+	      <button type="button" style="border: none; background: none;" data-toggle="modal" data-target="#helpModalDDC"><i class="fa fa-question"></i></button> 
+		<div class="modal fade" id="helpModalDDC" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">Help: Discover Default Content</h4>
+		      </div>
+
+			<div class="modal-body">
+			  <ol>
+			    <?php 
+			      foreach ($_SESSION['help_info'] as $note){
+				if ($note['category'] == "Discover Default Content"){
+			    ?>
+				  <li><?php echo $note['data']?></li>
+			    <?php
+				}
+			      }
+			    ?>
+			  </ol>
+
+			</div>
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			    </div>
+
+		      </div>
+		    </div>
+		  </div>
+	      <!-- Status Dropdown -->
 	      <select name="status">
 		<option value="Not Started"> Not Started </option>
 		<option value="In Progress"> In Progress </option>
@@ -163,18 +281,94 @@
     <div class="col-lg-4">
       <div class="panel panel-default">
 	<div class="panel-heading">
-	  <i class="fa fa-file-archive-o fa-fw"></i> Nikto Reports
+	  <i class="fa fa-file-archive-o fa-fw"></i> Nikto Report(s)
 	  <div class="pull-right">
-	    <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Add Report </button>
+	    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#niktoModal"><i class="fa fa-plus"></i> Add Report</button> 
+		<div class="modal fade" id="niktoModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">Upload Nikto Report</h4>
+		      </div>
+			<form class="m-t" role="form" method="post" action="webappdetails/nikto_submit.php?id=<?php echo $webappid; ?>">
+			<div class="modal-body">
+			  <textarea style="resize: none;" cols="121" rows="30" name="niktoReport"></textarea>
+			</div>
+
+			  <div class="modal-footer">
+			    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			    <button type="submit" class="btn btn-primary">Submit</button>
+			  </div>
+			</form>
+		      </div>
+		    </div>
+		  </div>
+	    
 	  </div>
 	</div>
 	<!-- /.panel-heading -->
 	
 	<div class="panel-body">
 	  <div class="row">
+	    <div class="col-lg-12">
+	      <div class="table-responsive">
+		
+		    <table class="table table-striped table-bordered table-hover">
+		      <thead>
+			<tr>
+			    <th>IP Address</th>
+			    <th>Hostname</th>
+			    <th>Port</th>
+			</tr>
+		    </thead>
+		    <tbody>
+		      <?php 
+			$niktoreports = get_nikto_reports($webappid);
+			foreach ($niktoreports as $niktoreport){
+		      ?> 
+			    <tr>
+			      <!-- DOMAIN NAME -->
+			      <td class="ipaddr">
+				 <a data-toggle="modal" href="#niktoModal<?php echo $niktoreport['id'];?>"><?php echo $niktoreport['ipaddr'];?></a>
+				  <div class="modal fade" id="niktoModal<?php echo $niktoreport['id'];?>" tabindex="-1" role="dialog" aria-hidden="true">
+				    <div class="modal-dialog modal-lg">
+				      <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					  <h4 class="modal-title">Nikto Report: <?php echo $niktoreport['hostname'] . ' : ' . $niktoreport['ipaddr']?></h4>
+					</div>
+					  <div class="modal-body">
+					    <?php echo $niktoreport['report'];?>
+					  </div>
 
-	      <p> Create either file upload or paste box to upload the results of the Nikto scan for easy access </p>
+					    <div class="modal-footer">
+					      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+					    </div>
+					</div>
+				      </div>
+				    </div>
+			      </td>
 
+			      <!-- DOMAIN ADDED DATE -->
+			      <td class="hostname">
+				<?php echo $niktoreport['hostname'];?>
+			      </td>
+			      
+			      <!-- ACTIONS -->
+			      <td class="port">
+				<?php echo $niktoreport['port'];?>   
+			      </td>
+
+			    </tr>
+			<?php } ?>
+		      </tbody>
+		  </table>
+		<!-- /.table-responsive -->
+		</div>
+		<!-- /.table-responsive -->
+	    </div>
+	    <!-- /.col-lg-12 -->
 	  </div>
 	  <!-- /.row -->
 	</div>
@@ -193,7 +387,39 @@
 	<div class="panel-heading">
 	  <i class="fa fa-compass fa-fw"></i> Enumerate Identifier-Specified Functions
 	    <div class="pull-right">
-	      <button type="submit" style="border: none; background: none;" class="deletetask" onclick=""><i class="fa fa-question"></i></button>
+	      <!-- Help Button -->
+	      <button type="button" style="border: none; background: none;" data-toggle="modal" data-target="#helpModalEISF"><i class="fa fa-question"></i></button> 
+		<div class="modal fade" id="helpModalEISF" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">Help: Enumerate Identifier-Specified Functions</h4>
+		      </div>
+		      <form class="m-t" role="form" method="post" action="domain_update.php?id=<?php echo $domain['id'];?>&webapp=<?php echo $domain['webapp_id']; ?>">
+			<div class="modal-body">
+			  <ol>
+			    <?php 
+			      foreach ($_SESSION['help_info'] as $note){
+				if ($note['category'] == "Enumerate Identifier-Specified Functions"){
+			    ?>
+				  <li><?php echo $note['data']?></li>
+			    <?php
+				}
+			      }
+			    ?>
+			  </ol>
+
+			</div>
+
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+			    </div>
+			</form>
+		      </div>
+		    </div>
+		  </div>
+	      <!-- Status Dropdown -->
 	      <select name="status">
 		<option value="Not Started"> Not Started </option>
 		<option value="In Progress"> In Progress </option>
@@ -205,14 +431,47 @@
 	
 	<div class="panel-body">
 	  <div class="row">
-	    <div class="col-lg-10">
-	    <p>
-	      Identify any instances where specifiv application functions are accessed by passing an identifier of the function in a request parameter (for example, /admin.jsp?action=edituser or /main.php?func=A21) <br/>
-	      Add a table here to add such links to keep track of them for further functionality.
-	    </p>
+	    <div class="col-lg-12">
+	    
+	    <form class="m-t" role="form" method="post" action="webappdetails/identifieradd_submit.php?id=<?php echo $webappid; ?>">
+	      <div class="form-group input-group">
+		  <input type="text" name="url" placeholder="Enter Identifier-Specified URL" class="form-control">
+		  <span class="input-group-btn">
+		    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+		  </span>
+	      </div>
+
+	    </form>   
+	    
+	      <div class="table-responsive">
+		
+		    <table class="table table-striped table-bordered table-hover">
+		      <thead>
+			<tr>
+			    <th>URLs</th>
+			</tr>
+		    </thead>
+		    <tbody>
+		      <?php 
+			$identfuncs = get_ident_funcs($webappid);
+			foreach ($identfuncs as $identfunc){
+		      ?> 
+			    <tr>
+			      <!-- DOMAIN NAME -->
+			      <td class="urls">
+				<a href="<?php echo $identfunc['url']; ?>"><?php echo $identfunc['url']; ?></a>
+			      </td>
+
+			    </tr>
+			<?php } ?>
+		      </tbody>
+		  </table>
+		<!-- /.table-responsive -->
+		</div>
+		<!-- /.table-responsive -->
 
 	    </div>
-	    <!-- /.col-lg-10 -->
+	    <!-- /.col-lg-12 -->
 	  </div>
 	  <!-- /.row -->
 	</div>

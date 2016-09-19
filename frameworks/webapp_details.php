@@ -5,6 +5,7 @@
   $webappid = whitelist($_GET['id']);
   $_SESSION['id'] = $webappid;
   $webappdetails = get_webapp_details($webappid);
+  get_help();
 ?>
 
 
@@ -31,10 +32,12 @@
             
 	    <div class="row">
 	      <div class="col-lg-5">
+	      
+	      
 		<button type="button" style="margin-bottom: 10px;"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#domainModal"> <i class="fa fa-plus"></i> Add Domain</button> 
-		<div class="modal inmodal" id="domainModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal fade" id="domainModal" tabindex="-1" role="dialog" aria-hidden="true">
 		  <div class="modal-dialog">
-		    <div class="modal-content animated bounceInRight">
+		    <div class="modal-content">
 		      <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 			<h4 class="modal-title">New Domain</h4>
@@ -81,9 +84,9 @@
 			      <!-- ACTIONS -->
 			      <td class="actions">
 				<button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal<?php echo $domain['id']; ?>"><i class="fa fa-pencil"></i> Edit </button> 
-				  <div class="modal inmodal" id="editModal<?php echo $domain['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+				  <div class="modal fade" id="editModal<?php echo $domain['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 				    <div class="modal-dialog">
-				      <div class="modal-content animated bounceInRight">
+				      <div class="modal-content">
 					<div class="modal-header">
 					  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 					  <h4 class="modal-title">Edit Domain</h4>
@@ -192,6 +195,16 @@
 	    popup.style.display = "none";      
 	  }
 	};
+	
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    // popover demo
+    $("[data-toggle=popover]")
+        .popover()
+
       </script>
 
 <?php 

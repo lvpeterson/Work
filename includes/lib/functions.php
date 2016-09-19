@@ -65,6 +65,29 @@
     return $thisweek;
   }
   
+  function get_help($category){
+    
+    global $dbh;
+    $helpstmt = $dbh->prepare('SELECT * from help_info');
+    $helpstmt->execute();
+    
+    $helpresult = $helpstmt->fetchAll();
+    $_SESSION['help_info'] = $helpresult;
+    
+  }
+  
+  function get_ident_funcs($webappid){
+  
+    global $dbh;
+    
+    $identfuncstmt = $dbh->prepare("SELECT * from identifier_specified_funcs where webapp_id = :webapp_id");
+    $identfuncstmt->bindParam(':webapp_id', $webappid);
+    $identfuncstmt->execute();
+    $identfuncresult = $identfuncstmt->fetchAll();
+    
+    return $identfuncresult;
+  }
+  
   function get_next_week(){
     $nextweek = [];
     list($negativeoff, $positiveoff) = get_date_offset();
@@ -80,6 +103,18 @@
       array_push($nextweek, date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d") + 7 + $count, date("Y"))));
     }
     return $nextweek;
+  }
+  
+  function get_nikto_reports($webappid){
+  
+    global $dbh;
+    
+    $niktoreportstmt = $dbh->prepare("SELECT * from nikto_reports where webapp_id = :webapp_id");
+    $niktoreportstmt->bindParam(':webapp_id', $webappid);
+    $niktoreportstmt->execute();
+    $niktoresult = $niktoreportstmt->fetchAll();
+    
+    return $niktoresult;
   }
  
   function get_notes($task_id = NULL){
