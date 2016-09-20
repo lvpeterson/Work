@@ -194,13 +194,15 @@
 	  <i class="fa fa-google-plus-official fa-fw"></i> Generate Google Hack Queries
 	    <div class="pull-right">
 	      <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-bug"></i> Generate </button> 
-	    </div>name
+	    </div>
 	</div>
 	<!-- /.panel-heading -->
 	
 	<div class="panel-body">
 	  <div class="row">
-	    <a href="https://www.exploit-db.com/google-hacking-database/"> GHDB </a>
+	    <div class="col-lg-12">
+	      <a href="https://www.exploit-db.com/google-hacking-database/"> GHDB </a>
+	    </div>
 	  </div>
 	  <!-- /.row -->  
 	</div>
