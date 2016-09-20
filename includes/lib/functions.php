@@ -88,6 +88,34 @@
     return $identfuncresult;
   }
   
+  function get_mapping_status($webappid){
+  
+    global $dbh;
+    
+    $mapstatusstmt = $dbh->prepare("SELECT * from mappingtab_status WHERE webapp_id = :webappid");
+    $mapstatusstmt->bindParam(':webappid', $webappid);
+    
+    $mapstatusstmt->execute();
+    $mapresult = $mapstatusstmt->fetchAll();
+  
+    return $mapresult[0];
+  
+  }
+  
+  function get_mapping_checkboxes($webappid){
+  
+    global $dbh;
+    
+    $mapcboxstmt = $dbh->prepare("SELECT * from mappingtab_checkboxes WHERE webapp_id = :webappid");
+    $mapcboxstmt->bindParam(':webappid', $webappid);
+    
+    $mapcboxstmt->execute();
+    $mapcboxresult = $mapcboxstmt->fetchAll();
+  
+    return $mapcboxresult[0];
+  
+  }
+  
   function get_next_week(){
     $nextweek = [];
     list($negativeoff, $positiveoff) = get_date_offset();
@@ -228,6 +256,21 @@
     return $webapptestresult;
   
   }
+  
+  function initiate_webapp($webappid){
+    global $dbh;
+    
+    // Mapping Status & Checkboxes
+    
+    $initmappingstmt = $dbh->prepare("INSERT into mappingtab_status (webapp_id) VALUES (:webapp_id)");
+    $initmappingstmt->bindParam(':webapp_id', $webappid);
+    $initmappingstmt->execute();
+    
+    $initmappingstmt = $dbh->prepare("INSERT into mappingtab_checkboxes (webapp_id) VALUES (:webapp_id)");
+    $initmappingstmt->bindParam(':webapp_id', $webappid);
+    $initmappingstmt->execute();
+  
+  }    
   
   function nav_links($groupid = NULL){
     global $dbh;

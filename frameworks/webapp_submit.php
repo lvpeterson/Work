@@ -13,8 +13,11 @@
   $addteststmt->bindParam(':description', $description);
   $addteststmt->bindParam(':asignee', $asignee);
 
-  
   $addteststmt->execute();
+  
+  $webappid = $dbh->lastInsertId();
+  initiate_webapp($webappid);
+  
   header("Location: /Projects/Work/frameworks/webapp.php");
  
 ?>

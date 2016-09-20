@@ -1,4 +1,3 @@
-
   <div class="row" style="margin-top: 10px;">
     <div class="col-lg-4">
       <div class="panel panel-default">
@@ -36,10 +35,24 @@
 		      </div>
 		    </div>
 		  <!-- Status Dropdown -->
-		  <select name="status">
-		    <option value="Not Started"> Not Started </option>
-		    <option value="In Progress"> In Progress </option>
-		    <option value="Complete"> Complete </option>
+		  <select id="EVCstatus" name="EVCstatus" onchange="updateStatus(this.id, maptabname, <?php echo $webappid; ?>)">
+ 		    <?php  
+		      switch ($mapstatus['evcstatus']){
+			case "Not Started": ?>
+			  <option value="Not Started" selected> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "In Progress": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress" selected> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "Complete": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" selected> Complete </option>
+		    <?php break; } ?> 
 		  </select>
 	      </div>
 	  
@@ -49,10 +62,30 @@
 	<div class="panel-body">
 	  <div class="row">
 	      <ul style="list-style:none">
-		<li><input type="checkbox" name="javascript" value="completed"> JavaScript Enabled/Disabled</li>
-		<li><input type="checkbox" name="cookies" value="completed"> Cookies Enabled/Disabled</li>
-		<li><input type="checkbox" name="sitemap" value="completed"> Review Sitemap</li>
-		<li><input type="checkbox" name="spidering" value="completed"> Active Spidering</li>
+	      
+		<?php if($mapcheckboxes['jscript']){ ?>
+		<li><input type="checkbox" id="jscript" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> JavaScript Enabled/Disabled</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="jscript" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> JavaScript Enabled/Disabled</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['cookies']){ ?>
+		<li><input type="checkbox" id="cookies" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Cookies Enabled/Disabled</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="cookies" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Cookies Enabled/Disabled</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['sitemap_review']){ ?>
+		<li><input type="checkbox" id="sitemap_review" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Review Sitemap</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="sitemap_review" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Review Sitemap</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['active_spider']){ ?>
+		<li><input type="checkbox" id="active_spider" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Active Spidering</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="active_spider" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Active Spidering</li>
+		<?php } ?>
 	      </ul>
 	  </div>
 	  <!-- /.row -->
@@ -99,10 +132,24 @@
 		    </div>
 		  </div>
 	      <!-- Status Dropdown -->
-	      <select name="status">
-		<option value="Not Started"> Not Started </option>
-		<option value="In Progress"> In Progress </option>
-		<option value="Complete"> Complete </option>
+		<select id="CPRstatus" name="CPRstatus" onchange="updateStatus(this.id, maptabname, <?php echo $webappid; ?>)">
+ 		    <?php  
+		      switch ($mapstatus['cprstatus']){
+			case "Not Started": ?>
+			  <option value="Not Started" selected> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "In Progress": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress" selected> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "Complete": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" selected> Complete </option>
+		    <?php break; } ?> 
 	      </select>
 	    </div>
 	</div>
@@ -111,9 +158,24 @@
 	<div class="panel-body">
 	  <div class="row">
 	    <ul style="list-style:none">
-	      <li><input type="checkbox" name="archives" value="completed"> Check Archive of Site (Wayback Machine)</li>
-	      <li><input type="checkbox" name="emails" value="completed"> Check Public E-mails Found</li>
-	      <li><input type="checkbox" name="wsdl" value="completed"> Review WSDL Files & Generate Function List</li>
+	    
+	      <?php if($mapcheckboxes['archive_site']){ ?>
+	      <li><input type="checkbox" id="archive_site" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Check Archive of Site (Wayback Machine)</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="archive_site" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Check Archive of Site (Wayback Machine)</li>
+	      <?php } ?>
+	      
+	      <?php if($mapcheckboxes['public_emails']){ ?>
+	      <li><input type="checkbox" id="public_emails" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Check Public E-mails Found</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="public_emails" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Check Public E-mails Found</li>
+	      <?php } ?>
+	      
+	      <?php if($mapcheckboxes['wsdl_files']){ ?>
+	      <li><input type="checkbox" id="wsdl_files" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Review WSDL Files & Generate Function List</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="wsdl_files" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Review WSDL Files & Generate Function List</li>
+	      <?php } ?>
 	    </ul>
 	  </div>
 	  <!-- /.row -->
@@ -132,7 +194,7 @@
 	  <i class="fa fa-google-plus-official fa-fw"></i> Generate Google Hack Queries
 	    <div class="pull-right">
 	      <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-bug"></i> Generate </button> 
-	    </div>
+	    </div>name
 	</div>
 	<!-- /.panel-heading -->
 	
@@ -189,10 +251,24 @@
 		    </div>
 		  </div>
 	      <!-- Status Dropdown -->
-	      <select name="status">
-		<option value="Not Started"> Not Started </option>
-		<option value="In Progress"> In Progress </option>
-		<option value="Complete"> Complete </option>
+		<select id="DHCstatus" name="DHCstatus" onchange="updateStatus(this.id, maptabname, <?php echo $webappid; ?>)">
+ 		    <?php  
+		      switch ($mapstatus['dhcstatus']){
+			case "Not Started": ?>
+			  <option value="Not Started" selected> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "In Progress": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress" selected> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "Complete": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" selected> Complete </option>
+		    <?php break; } ?> 
 	      </select>
 	    </div>
 	</div>
@@ -201,10 +277,29 @@
 	<div class="panel-body">
 	  <div class="row">
 	      <ul style="list-style:none">
-		<li><input type="checkbox" name="nonexistant" value="completed"> Confirm How App Handles Non-Existent Items</li>
-		<li><input type="checkbox" name="namingconvention" value="completed"> Understand Naming Conventions</li>
-		<li><input type="checkbox" name="serverside" value="completed"> Review Code to Find Clues For Hidden Server-Side Content</li>
-		<li><input type="checkbox" name="automated" value="completed"> Automated Scanning For Directories & Files</li>
+		<?php if($mapcheckboxes['non_existent']){ ?>
+		<li><input type="checkbox" id="non_existent" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Confirm How App Handles Non-Existent Items</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="non_existent" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Confirm How App Handles Non-Existent Items</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['naming_conventions']){ ?>
+		<li><input type="checkbox" id="naming_conventions" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Understand Naming Conventions</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="naming_conventions" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Understand Naming Conventions</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['hidden_server_side']){ ?>
+		<li><input type="checkbox" id="hidden_server_side" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Review Code to Find Clues For Hidden Server-Side Content</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="hidden_server_side" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Review Code to Find Clues For Hidden Server-Side Content</li>
+		<?php } ?>
+		
+		<?php if($mapcheckboxes['automated_scanning']){ ?>
+		<li><input type="checkbox" id="automated_scanning" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Automated Scanning For Directories & Files</li>
+		<?php }else{?>
+		<li><input type="checkbox" id="automated_scanning" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Automated Scanning For Directories & Files</li>
+		<?php } ?>
 	      </ul>
 	  </div>
 	  <!-- /.row -->
@@ -253,10 +348,24 @@
 		    </div>
 		  </div>
 	      <!-- Status Dropdown -->
-	      <select name="status">
-		<option value="Not Started"> Not Started </option>
-		<option value="In Progress"> In Progress </option>
-		<option value="Complete"> Complete </option>
+		  <select id="DDCstatus" name="DDCstatus" onchange="updateStatus(this.id, maptabname, <?php echo $webappid; ?>)">
+ 		    <?php  
+		      switch ($mapstatus['ddcstatus']){
+			case "Not Started": ?>
+			  <option value="Not Started" selected> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "In Progress": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress" selected> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "Complete": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" selected> Complete </option>
+		    <?php break; } ?> 
 	      </select>
 	    </div>
 	</div>
@@ -265,9 +374,23 @@
 	<div class="panel-body">
 	  <div class="row">
 	    <ul style="list-style:none">
-	      <li><input type="checkbox" name="nikto" value="completed"> Run Nikto</li>
-	      <li><input type="checkbox" name="rootdir" value="completed"> Request Server's Root Directory</li>
-	      <li><input type="checkbox" name="rootdirua" value="completed"> Request Server's Root Directory With Different User-Agent Headers</li>
+	      <?php if($mapcheckboxes['nikto_ran']){ ?>
+	      <li><input type="checkbox" id="nikto_ran" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Run Nikto</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="nikto_ran" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Run Nikto</li>
+	      <?php } ?>
+	      
+	      <?php if($mapcheckboxes['request_server_root']){ ?>
+	      <li><input type="checkbox" id="request_server_root" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Request Server's Root Directory</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="request_server_root" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Request Server's Root Directory</li>
+	      <?php } ?>
+	      
+	      <?php if($mapcheckboxes['request_server_root_ua']){ ?>
+	      <li><input type="checkbox" id="request_server_root_ua" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)" checked> Request Server's Root Directory With Different User-Agent Headers</li>
+	      <?php }else{?>
+	      <li><input type="checkbox" id="request_server_root_ua" onclick="updateCheckbox(this.id, maptabname, <?php echo $webappid; ?>)"> Request Server's Root Directory With Different User-Agent Headers</li>
+	      <?php } ?>
 	    </ul>
 	  </div>
 	  <!-- /.row -->
@@ -420,10 +543,24 @@
 		    </div>
 		  </div>
 	      <!-- Status Dropdown -->
-	      <select name="status">
-		<option value="Not Started"> Not Started </option>
-		<option value="In Progress"> In Progress </option>
-		<option value="Complete"> Complete </option>
+		  <select id="EISFstatus" name="EISFstatus" onchange="updateStatus(this.id, maptabname, <?php echo $webappid; ?>)">
+ 		    <?php  
+		      switch ($mapstatus['eisfstatus']){
+			case "Not Started": ?>
+			  <option value="Not Started" selected> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "In Progress": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress" selected> In Progress </option>
+			  <option value="Complete" > Complete </option>
+		    <?php break;
+			case "Complete": ?>
+			  <option value="Not Started"> Not Started </option>
+			  <option value="In Progress"> In Progress </option>
+			  <option value="Complete" selected> Complete </option>
+		    <?php break; } ?> 
 	      </select>
 	    </div>
 	</div>
@@ -459,7 +596,7 @@
 			    <tr>
 			      <!-- DOMAIN NAME -->
 			      <td class="urls">
-				<a href="<?php echo $identfunc['url']; ?>"><?php echo $identfunc['url']; ?></a>
+				<a target="_blank" href="<?php echo $identfunc['url']; ?>"><?php echo $identfunc['url']; ?></a>
 			      </td>
 
 			    </tr>

@@ -6,8 +6,15 @@
   $_SESSION['id'] = $webappid;
   $webappdetails = get_webapp_details($webappid);
   get_help();
+  
+  // Get statuses
+  $mapstatus = get_mapping_status($webappid);
+  $mapcheckboxes = get_mapping_checkboxes($webappid);
 ?>
 
+<script>
+  var maptabname = "mapping";
+</script>
 
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -73,7 +80,7 @@
 			    <tr>
 			      <!-- DOMAIN NAME -->
 			      <td class="domain-name" >
-				  <a href="<?php echo $domain['domain']; ?>"><?php echo $domain['domain']; ?></a>
+				  <a target="_blank" href="<?php echo $domain['domain']; ?>"><?php echo $domain['domain']; ?></a>
 			      </td>
 
 			      <!-- DOMAIN ADDED DATE -->
@@ -180,30 +187,43 @@
       <!-- /#page-wrapper -->
       
       <script>
-	window.onload = function() {closebtn
-	  document.getElementById("LearnMoreBtn").onclick = function(){
-	    var overlay = document.getElementById("overlay");
-	    var popup = document.getElementById("popup");
-	    overlay.style.display = "block";
-	    popup.style.display = "block";
-	  };
-      
-	  document.getElementById("CloseBtn").onclick = function(){
-	    var overlay = document.getElementById("overlay");
-	    var popup = document.getElementById("popup");
-	    overlay.style.display = "none";
-	    popup.style.display = "none";      
-	  }
-	};
+	function updateStatus(elemID, tab, id){
+	  var selectBox = document.getElementById(elemID);
+	  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+	  $.ajax({
+	    type: "POST",
+	    dataType: "json",
+	    url: "/Projects/Work/frameworks/webappdetails/updateStatus.php",
+	    data: {
+		status: selectedValue,
+		box: elemID,
+		tab: tab,
+		id: id
+	    }
+	  });
+	}
 	
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-        selector: "[data-toggle=tooltip]",
-        container: "body"
-    })
-    // popover demo
-    $("[data-toggle=popover]")
-        .popover()
+	function updateCheckbox(elemID, tab, id){
+	  var checkBox = document.getElementById(elemID);
+	  var checked = 0;
+	  if (checkBox.checked == 1){
+	    checked = 1;
+	  }
+	  
+	  $.ajax({
+	    type: "POST",
+	    dataType: "json",
+	    url: "/Projects/Work/frameworks/webappdetails/updateCheckboxes.php",
+	    data: {
+		status: checked,
+		box: elemID,
+		tab: tab,
+		id: id
+	    }
+	  });
+	}
+
 
       </script>
 
